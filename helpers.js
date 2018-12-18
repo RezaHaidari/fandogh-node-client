@@ -2,7 +2,7 @@ const fs = require('fs');
 const archiver = require('archiver')
 const Ignore = require('node-dockerignore')
 const yaml = require('js-yaml')
-const configPath = "/.fandogh/config.yml"
+const configPath = "/fandogh.yml"
 const fandoghConfigs = require('./fandogh.json')
 
 const Helpers = {
@@ -105,10 +105,6 @@ const Helpers = {
   },
   createYamlFile: ({source, configs}) => {
     try {
-
-      if (!fs.existsSync(source+'/.fandogh')){
-        fs.mkdirSync(source+'/.fandogh');
-      } 
       let yml = Helpers.createYamlConfig(configs);
       fs.writeFileSync(source+configPath, yml)
       return yml
